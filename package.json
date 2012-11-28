@@ -1,26 +1,22 @@
 {
-  "name": "google-closure-library",
-  "description": "Google's common JavaScript library",
-  "version": "20150920.0.0",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/google/closure-library.git"
+  "name" : "closure-library",
+  "version" : "2325.0.0",
+  "description" : "Fork of closure-library that allows installation via NPM.",
+  "keywords" : ["javascript", "library", "google", "closure"],
+  "repository" : {
+    "type" : "git",
+    "url" : "http://github.com/Obvious/closure-library.git"
   },
-  "main": "closure/goog/bootstrap/nodejs.js",
-  "keywords": [
-    "javascript",
-    "library",
-    "goog",
-    "closure"
-  ],
-  "author": "The Closure Library Authors",
-  "license": "Apache-2.0",
-  "bugs": {
-    "url": "https://github.com/google/closure-library/issues"
+  "homepage" : "https://github.com/Obvious/closure-library",
+  "author" : {
+    "name" : "Daniel Pupius",
+    "email" : "dan@obvious.com",
+    "url" : "https://github.com/dpup"
   },
-  "homepage": "https://developers.google.com/closure/library/",
-  "devDependencies": {
-    "promise": "^7.0.4",
-    "protractor": "^2.1.0"
+  "scripts": {
+    "postinstall": "./bin/postinstall"
+  },
+  "dependencies": {
+    "glob": "3.1.14"
   }
 }
