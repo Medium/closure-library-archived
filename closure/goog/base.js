@@ -1700,5 +1700,3 @@ goog.scope = function(fn) {
 if (!COMPILED) {
   goog.global['COMPILED'] = COMPILED;
 }
-
-
