@@ -88,6 +88,20 @@ function testUrlWithPortNumber() {
       '<a href="http://www.google.com:80/">http://www.google.com:80/<\/a>');
 }
 
+function testUrlWithParens() {
+  assertLinkify(
+      'URL with parens',
+      'Visit my site (www.google.com)',
+      'Visit my site (<a href="http://www.google.com">www.google.com<\/a>)');
+}
+
+function testUrlWithEclamation() {
+  assertLinkify(
+      'URL with eclamation points',
+      'This is awesome www.google.com!',
+      'This is awesome <a href="http://www.google.com">www.google.com<\/a>!');
+}
+
 function testUrlWithUserPasswordAndPortNumber() {
   assertLinkify(
       'URL with a user, a password and a port number',
