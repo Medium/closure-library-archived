@@ -242,4 +242,3 @@ goog.string.linkify.FIND_LINKS_RE_ = new RegExp(
     // Match url after a workd break.
     '\\b' + goog.string.linkify.URL_ + '|$)',
     'g');
-
