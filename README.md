@@ -8,7 +8,9 @@ compatible with our products. There may occasionally be changes introduced to
 work around temporary issues or to try out fixes in preparation of upstream
 patches.
 
-The package number reflects the date the last merge was taken from.
+The package number reflects the date that we last merged the fork. We rebase
+our changes on top of origin/master, so that our modifications are always on top of
+the closure-library master changes.
 
 
 ## NPM Info
@@ -39,3 +41,4 @@ Developers, please see the
 
 See also the
 [goog.ui Demos](http://google.github.io/closure-library/source/closure/goog/demos/)
+
