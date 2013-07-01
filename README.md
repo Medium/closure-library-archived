@@ -8,7 +8,9 @@ compatible with our products. There may occasionally be changes introduced to
 work around temporary issues or to try out fixes in preparation of upstream
 patches.
 
-The package number reflects the date the last merge was taken from.
+The package number reflects the date that we last merged the fork. We rebase
+our changes on top of origin/master, so that our modifications are always on top of
+the closure-library master changes.
 
 
 ## NPM Info
@@ -60,4 +62,3 @@ var sha1 = new goog.crypt.Sha1();
 sha1.update("foobar");
 var hash = sha1.digest();
 ```
-
