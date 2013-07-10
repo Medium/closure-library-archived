@@ -300,6 +300,10 @@ goog.pubsub.PubSub.prototype.publish = function(topic, var_args) {
           }
         }
       }
+      // if disposed during publish, cleanup internal objects
+      if (this.isDisposed()) {
+        this.clear()
+      }
     }
 
     // At least one subscriber was called.
@@ -367,7 +371,14 @@ goog.pubsub.PubSub.prototype.getCount = function(opt_topic) {
 
 /** @override */
 goog.pubsub.PubSub.prototype.disposeInternal = function() {
-  goog.pubsub.PubSub.base(this, 'disposeInternal');
-  this.clear();
-  this.pendingKeys_.length = 0;
+  goog.pubsub.PubSub.superClass_.disposeInternal.call(this);
+
+  // if we're currently publishing, queue keys for removal
+  if (this.publishDepth_ != 0) {
+    for (var i = 1; i < this.subscriptions_.length; i+=3) {
+      this.unsubscribeByKey(i)
+    }
+  } else {
+    this.clear()
+  }
 };

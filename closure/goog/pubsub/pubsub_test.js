@@ -631,6 +631,27 @@ function testUnsubscribeSelfWhilePublishing() {
       pubsub.pendingKeys_.length);
 }
 
+function testDisposeSelfWhilePublishing() {
+  // It's OK for a subscriber to dispose of pubsub during a publish
+  var assertCalled = false;
+  function disposeInternal() {
+    pubsub.dispose()
+  }
+  function setAssertCalled() {
+    assertCalled = true
+  }
+
+  pubsub.subscribe('someTopic', disposeInternal);
+  pubsub.subscribe('someTopic', setAssertCalled);
+  pubsub.publish('someTopic');
+
+  assertTrue('setAssertCalled() must have been called', assertCalled);
+
+  assertEquals('PubSub must not have any subscriptions pending removal', 0, pubsub.pendingKeys_.length);
+  assertEquals('PubSub must not have any subscriptions pending removal', 0, pubsub.subscriptions_.length);
+  assertEquals('PubSub must not have any subscriptions pending removal', 0, goog.object.getCount(pubsub.topics_));
+}
+
 function testPublishReturnValue() {
   pubsub.subscribe(
       'X', function() { pubsub.unsubscribe('X', arguments.callee); });
