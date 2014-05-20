@@ -92,17 +92,4 @@ goog.dom.browserrange.WebKitRange.prototype.compareBrowserRangeEndpoints =
               goog.global['Range'].START_TO_END : // Sense reversed
               goog.global['Range'].END_TO_END),
       /** @type {Range} */ (range));
-};
-
-
-/** @override */
-goog.dom.browserrange.WebKitRange.prototype.selectInternal = function(
-    selection, reversed) {
-  if (reversed) {
-    selection.setBaseAndExtent(this.getEndNode(), this.getEndOffset(),
-        this.getStartNode(), this.getStartOffset());
-  } else {
-    selection.setBaseAndExtent(this.getStartNode(), this.getStartOffset(),
-        this.getEndNode(), this.getEndOffset());
-  }
-};
+    };
