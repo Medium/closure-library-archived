@@ -33,6 +33,8 @@ var stubs = new goog.testing.PropertyReplacer();
 
 function setUp() {
   mockClock.install();
+  stubs.replace(goog.async.Deferred, 'setTimeout_', setTimeout);
+  stubs.replace(goog.async.Deferred, 'clearTimeout_', clearTimeout);
 }
 
 function tearDown() {
