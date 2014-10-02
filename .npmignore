@@ -12,3 +12,8 @@
 *.html
 *.png
 *_test.js
+alltests.js
+closure/known_issues
+AUTHORS
+CONTRIBUTING
+README
