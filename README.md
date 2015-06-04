@@ -12,6 +12,14 @@ The package number reflects the date that we last merged the fork. We rebase
 our changes on top of origin/master, so that our modifications are always on top of
 the closure-library master changes.
 
+## Using
+
+```
+require('obvious-closure-library').bootstrap()
+goog.require('goog.string.linkify')
+goog.string.linkify.linkifyPlainText('Hello www.world.com')
+```
+
 ## NPM Info
 
 The repository contains a lot of test files and demos, as such we include a
