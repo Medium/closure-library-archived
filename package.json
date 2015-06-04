@@ -1,6 +1,6 @@
 {
   "name" : "obvious-closure-library",
-  "version" : "20150218.0.0",
+  "version" : "20150605.0.0",
   "description" : "Fork of closure-library that allows installation via NPM.",
   "keywords" : ["javascript", "library", "google", "closure"],
   "repository" : {
@@ -13,8 +13,6 @@
     "email" : "dan@medium.com",
     "url" : "https://github.com/dpup"
   },
-  "licenses": [ {
-    "type": "Apache 2.0",
-    "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
-  } ]
+  "license": "Apache-2.0",
+  "main": "index.js"
 }
