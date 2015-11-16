@@ -3,14 +3,19 @@
 This is Medium's fork of the
 [Google Closure Library](https://github.com/google/closure-library).
 
-We try to keep it reasonably up to date, but only after testing that it is
-compatible with our products. There may occasionally be changes introduced to
-work around temporary issues or to try out fixes in preparation of upstream
-patches.
+The Closure project was started in 2006 in a very different browser landscape to
+today. Browsers were rapidly changing yet upgrade cycles were still slow. Closure
+provided a common abstraction layer that accounted for the myriad of differences
+and bugs.
 
-The package number reflects the date that we last merged the fork. We rebase
-our changes on top of origin/master, so that our modifications are always on top of
-the closure-library master changes.
+It is Medium's intent to modernize Closure. We consider it the missing standard
+library for JavaScript, and will evolve it to match that description. We will be
+removing old browser compatibility code and much of the UI features. We will work
+with the Closure Compiler and Templates teams, as compatibility there is important
+to us.
+
+The version of the upstream Closure Library that we are working from will always
+be available in origin/pristine.
 
 ## Using
 
@@ -28,8 +33,8 @@ when installed via NPM.
 
 ## Contributing
 
-This project isn't intended for external contribution, we suggest instead you
-[send patches](https://code.google.com/p/closure-library/wiki/Contributors)
+Currently, this project isn't intended for external contribution, we suggest
+instead you [send patches](https://code.google.com/p/closure-library/wiki/Contributors)
 directly.
 
 ## Original Readme
