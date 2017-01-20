@@ -119,6 +119,19 @@ goog.labs.net.webChannel.WebChannelBase = function(
   this.extraParams_ = null;
 
   /**
+   * Parameter name for the http session id.
+   * @private {?string}
+   */
+  this.httpSessionIdParam_ = null;
+
+  /**
+   * The http session id, to be sent with httpSessionIdParam_ with each
+   * request after the initial handshake.
+   * @private {?string}
+   */
+  this.httpSessionId_ = null;
+
+  /**
    * The ChannelRequest object for the backchannel.
    * @private {ChannelRequest}
    */
@@ -312,7 +325,8 @@ goog.labs.net.webChannel.WebChannelBase = function(
    * See {@link goog.net.XhrIo#setWithCredentials}.
    * @private {boolean}
    */
-  this.supportsCrossDomainXhrs_ = false;
+  this.supportsCrossDomainXhrs_ =
+      (opt_options && opt_options.supportsCrossDomainXhr) || false;
 
   /**
    * The current session id.
@@ -650,6 +664,38 @@ WebChannelBase.prototype.getExtraHeaders = function() {
  */
 WebChannelBase.prototype.setExtraHeaders = function(extraHeaders) {
   this.extraHeaders_ = extraHeaders;
+};
+
+
+/**
+ * @override
+ */
+WebChannelBase.prototype.setHttpSessionIdParam = function(httpSessionIdParam) {
+  this.httpSessionIdParam_ = httpSessionIdParam;
+};
+
+
+/**
+ * @override
+ */
+WebChannelBase.prototype.getHttpSessionIdParam = function() {
+  return this.httpSessionIdParam_;
+};
+
+
+/**
+ * @override
+ */
+WebChannelBase.prototype.setHttpSessionId = function(httpSessionId) {
+  this.httpSessionId_ = httpSessionId;
+};
+
+
+/**
+ * @override
+ */
+WebChannelBase.prototype.getHttpSessionId = function() {
+  return this.httpSessionId_;
 };
 
 
@@ -1609,16 +1655,21 @@ WebChannelBase.prototype.onInput_ = function(respArray) {
             this.hostPrefix_, /** @type {string} */ (this.path_));
         // Open connection to receive data
         this.ensureBackChannel_();
-      } else if (nextArray[0] == 'stop') {
+      } else if (nextArray[0] == 'stop' || nextArray[0] == 'close') {
+        // treat close also as an abort
         this.signalError_(WebChannelBase.Error.STOP);
       }
     } else if (this.state_ == WebChannelBase.State.OPENED) {
-      if (nextArray[0] == 'stop') {
+      if (nextArray[0] == 'stop' || nextArray[0] == 'close') {
         if (batch && !goog.array.isEmpty(batch)) {
           this.handler_.channelHandleMultipleArrays(this, batch);
           batch.length = 0;
         }
-        this.signalError_(WebChannelBase.Error.STOP);
+        if (nextArray[0] == 'stop') {
+          this.signalError_(WebChannelBase.Error.STOP);
+        } else {
+          this.disconnect();
+        }
       } else if (nextArray[0] == 'noop') {
         // ignore - noop to keep connection happy
       } else {
@@ -1815,6 +1866,12 @@ WebChannelBase.prototype.createDataUri = function(
     goog.object.forEach(this.extraParams_, function(value, key) {
       uri.setParameterValue(key, value);
     });
+  }
+
+  var param = this.getHttpSessionIdParam();
+  var value = this.getHttpSessionId();
+  if (param && value) {
+    uri.setParameterValue(param, value);
   }
 
   // Add the protocol version to the URI.
