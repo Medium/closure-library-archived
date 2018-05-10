@@ -367,7 +367,7 @@ function testKeySequenceCancellingKeyup() {
 function testKeySequenceWithEscapeKey() {
   assertTrue(
       goog.testing.events.fireKeySequence(root, goog.events.KeyCodes.ESC));
-  if (goog.userAgent.EDGE ||
+  if (goog.userAgent.EDGE || goog.userAgent.GECKO ||
       (goog.userAgent.WEBKIT && goog.userAgent.isVersionOrHigher('525'))) {
     assertEventTypes(['keydown', 'keyup']);
   } else {
@@ -387,7 +387,7 @@ function testKeySequenceForMacActionKeysPositive() {
   stubs.set(goog.userAgent, 'MAC', true);
   goog.testing.events.fireKeySequence(
       root, goog.events.KeyCodes.C, {'metaKey': true});
-  assertEventTypes(['keypress', 'keyup']);
+  assertEventTypes(['keydown', 'keyup']);
 }
 
 function testKeySequenceForOptionKeysOnMac() {
