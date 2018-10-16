@@ -48,9 +48,9 @@ function testTrustedResourceUrl() {
 
 function testFormat_validFormatString() {
   // With scheme.
-  assertValidFormat(goog.string.Const.from('https://www.google.com/path'));
+  assertValidFormat(goog.string.Const.from('httpS://www.gOOgle.com/'));
   // Scheme-relative.
-  assertValidFormat(goog.string.Const.from('//www.google.com/path'));
+  assertValidFormat(goog.string.Const.from('//www.google.com/'));
   // Origin with hyphen and port.
   assertValidFormat(goog.string.Const.from('//ww-w.google.com:1000/path'));
   // IPv6 origin.
@@ -62,8 +62,8 @@ function testFormat_validFormatString() {
   assertValidFormat(goog.string.Const.from('/path?x'));
   // Mixed case.
   assertValidFormat(goog.string.Const.from('httpS://www.google.cOm/pAth'));
-  // Any char allowed after valid base path.
-  assertValidFormat(goog.string.Const.from('/path/@!%.'));
+  assertValidFormat(goog.string.Const.from('about:blank#'));
+  assertValidFormat(goog.string.Const.from('about:blank#x'));
 }
 
 
@@ -124,12 +124,14 @@ function testFormat_invalidFormatString() {
   assertInvalidFormat(goog.string.Const.from('https://www.google\\.com/'));
   assertInvalidFormat(
       goog.string.Const.from('https://user:password@www.google.com/'));
-  // Empty path.
-  assertInvalidFormat(goog.string.Const.from('https://google.com/'));
-  assertInvalidFormat(goog.string.Const.from('https://google.com//'));
-  // Invalid char in path.
-  assertInvalidFormat(goog.string.Const.from('/@'));
-  assertInvalidFormat(goog.string.Const.from('/%'));
+  // Two slashes, would allow origin to be set dynamically.
+  assertInvalidFormat(goog.string.Const.from('//'));
+  // Two slashes. IE allowed (allows?) '\' instead of '/'.
+  assertInvalidFormat(goog.string.Const.from('/\\'));
+  // Relative path.
+  assertInvalidFormat(goog.string.Const.from('abc'));
+  assertInvalidFormat(goog.string.Const.from('about:blank'));
+  assertInvalidFormat(goog.string.Const.from('about:blankX'));
 }
 
 
@@ -157,6 +159,126 @@ function testFromConstants() {
         goog.string.Const.from('foo'),
         goog.string.Const.from('bar')
       ])));
+}
+
+
+function testCloneWithParams() {
+  var url = goog.html.TrustedResourceUrl.fromConstant(
+      goog.string.Const.from('https://example.com/'));
+
+  assertEquals(
+      'https://example.com/',
+      url.cloneWithParams(undefined).getTypedStringValue());
+
+  assertEquals(
+      'https://example.com/', url.cloneWithParams(null).getTypedStringValue());
+
+  assertEquals(
+      'https://example.com/?search%25',
+      url.cloneWithParams('search%').getTypedStringValue());
+
+  assertEquals(
+      'https://example.com/?a=%3F%23%26&b=1&e=x&e=y',
+      url.cloneWithParams(
+             {'a': '?#&', 'b': 1, 'c': null, 'd': undefined, 'e': ['x', 'y']})
+          .getTypedStringValue());
+
+  assertEquals(
+      'https://example.com/',
+      url.cloneWithParams(undefined, null).getTypedStringValue());
+
+  assertEquals(
+      'https://example.com/#hash%25',
+      url.cloneWithParams(undefined, 'hash%').getTypedStringValue());
+
+  assertEquals(
+      'https://example.com/#a=%3F%23%26&b=1&e=x&e=y',
+      url.cloneWithParams(
+             undefined,
+             {'a': '?#&', 'b': 1, 'c': null, 'd': undefined, 'e': ['x', 'y']})
+          .getTypedStringValue());
+
+  var hashAndSearchUrl = goog.html.TrustedResourceUrl.fromConstant(
+      goog.string.Const.from('https://example.com/?a=x#top'));
+
+  assertEquals(
+      'https://example.com/?a=x#top',
+      hashAndSearchUrl.cloneWithParams(undefined).getTypedStringValue());
+
+  assertEquals(
+      'https://example.com/?a=x#top',
+      hashAndSearchUrl.cloneWithParams(null).getTypedStringValue());
+
+  assertEquals(
+      'https://example.com/?search%25#top',
+      hashAndSearchUrl.cloneWithParams('search%').getTypedStringValue());
+
+  assertEquals(
+      'https://example.com/?a=x&a=%3F%23%26&b=1&e=x&e=y#top',
+      hashAndSearchUrl
+          .cloneWithParams(
+              {'a': '?#&', 'b': 1, 'c': null, 'd': undefined, 'e': ['x', 'y']})
+          .getTypedStringValue());
+
+  assertEquals(
+      'https://example.com/?a=x#top',
+      hashAndSearchUrl.cloneWithParams(undefined, null).getTypedStringValue());
+
+  assertEquals(
+      'https://example.com/?a=x#hash%25',
+      hashAndSearchUrl.cloneWithParams(undefined, 'hash%')
+          .getTypedStringValue());
+
+  assertEquals(
+      'https://example.com/?a=x#top&a=%3F%23%26&b=2&e=z&e=z',
+      hashAndSearchUrl
+          .cloneWithParams(
+              undefined,
+              {'a': '?#&', 'b': 2, 'c': null, 'd': undefined, 'e': ['z', 'z']})
+          .getTypedStringValue());
+
+  assertEquals(
+      'https://example.com/' +
+          '?a=x&a=%3F%23%26&b=1&e=x&e=y#top&a=%3F%23%26&b=2&e=z&e=z',
+      hashAndSearchUrl
+          .cloneWithParams(
+              {'a': '?#&', 'b': 1, 'c': null, 'd': undefined, 'e': ['x', 'y']},
+              {'a': '?#&', 'b': 2, 'c': null, 'd': undefined, 'e': ['z', 'z']})
+          .getTypedStringValue());
+}
+
+
+function testFormatWithParams() {
+  var url = goog.html.TrustedResourceUrl.formatWithParams(
+      goog.string.Const.from('https://example.com/'), {}, {'a': '&'});
+  assertEquals('https://example.com/?a=%26', url.getTypedStringValue());
+
+  url = goog.html.TrustedResourceUrl.formatWithParams(
+      goog.string.Const.from('https://example.com/%{file}'), {'file': 'abc'},
+      {'b': 1, 'c': null, 'd': undefined});
+  assertEquals('https://example.com/abc?b=1', url.getTypedStringValue());
+
+  url = goog.html.TrustedResourceUrl.formatWithParams(
+      goog.string.Const.from('https://example.com/'), {}, {'a': ['x', 'y']});
+  assertEquals('https://example.com/?a=x&a=y', url.getTypedStringValue());
+
+  url = goog.html.TrustedResourceUrl.formatWithParams(
+      goog.string.Const.from('https://example.com/%{prestoId}'),
+      {'prestoId': 1}, {'origin': 'https://example.com/'});
+  assertEquals(
+      'https://example.com/1?origin=https%3A%2F%2Fexample.com%2F',
+      url.getTypedStringValue());
+
+  url = goog.html.TrustedResourceUrl.formatWithParams(
+      goog.string.Const.from('https://example.com/%{file}?a=x#top'),
+      {'file': 'abc'},
+      {'a': '?#&', 'b': 1, 'c': null, 'd': undefined, 'e': ['x', 'y']},
+      {'a': '?#&', 'b': 2, 'c': null, 'd': undefined, 'e': ['z', 'z']});
+
+  assertEquals(
+      'https://example.com/abc' +
+          '?a=x&a=%3F%23%26&b=1&e=x&e=y#top&a=%3F%23%26&b=2&e=z&e=z',
+      url.getTypedStringValue());
 }
 
 

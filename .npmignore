@@ -18,3 +18,14 @@ AUTHORS
 CONTRIBUTING
 README
 .travis.yml
+*.html
+*_test.*
+.*
+/*.js
+/*.json
+/closure/bin/generate_closure_unit_tests
+/closure/goog/demos/
+/closure-deps/
+/doc
+/scripts
+testdata
