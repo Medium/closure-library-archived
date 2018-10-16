@@ -11,5 +11,6 @@
 # python
 *.pyc
 
-node_modules
 npm-debug.log
+node_modules/
+closure-deps/node_modules/
