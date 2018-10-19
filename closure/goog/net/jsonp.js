@@ -240,7 +240,7 @@ goog.net.Jsonp.prototype.send = function(
  * Cancels a given request. The request must be exactly the object returned by
  * the send method.
  * @param {Object} request The request object returned by the send method.
- * @suppress {strictMissingProperties} Part of the go/strict_warnings_migration
+ * @_suppress {strictMissingProperties} Part of the go/strict_warnings_migration
  */
 goog.net.Jsonp.prototype.cancel = function(request) {
   if (request) {

@@ -16,7 +16,7 @@
  * @fileoverview Definition of the Tracer class and associated classes.
  *
  * @see ../demos/tracer.html
- * @suppress {strictMissingProperties}
+ * @_suppress {strictMissingProperties}
  */
 
 goog.provide('goog.debug.StopTraceDetail');
