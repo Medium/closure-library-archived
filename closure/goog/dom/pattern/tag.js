@@ -92,7 +92,7 @@ goog.inherits(goog.dom.pattern.Tag, goog.dom.pattern.AbstractPattern);
  * @return {goog.dom.pattern.MatchType} <code>MATCH</code> if the pattern
  *     matches, <code>NO_MATCH</code> otherwise.
  * @override
- * @_suppress {strictMissingProperties} Part of the go/strict_warnings_migration
+ * suppress {strictMissingProperties} Part of the go/strict_warnings_migration
  */
 goog.dom.pattern.Tag.prototype.matchToken = function(token, type) {
   // Check the direction and tag name.

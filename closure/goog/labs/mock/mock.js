@@ -118,7 +118,7 @@ goog.labs.mock.spy = function(obj) {
  * @param {!goog.labs.mock.verification.VerificationMode=} opt_verificationMode The mode
  *     under which to verify invocations.
  * @return {?} The verifier. Return type {?} to avoid compilation errors.
- * @_suppress {strictMissingProperties} Part of the go/strict_warnings_migration
+ * suppress {strictMissingProperties} Part of the go/strict_warnings_migration
  */
 goog.labs.mock.verify = function(obj, opt_verificationMode) {
   var mode = opt_verificationMode || goog.labs.mock.verification.atLeast(1);
@@ -566,7 +566,7 @@ goog.labs.mock.MockManager_.prototype.verifyInvocation = function(
  * @param {!Object|!Function} objOrClass The object or class to set up the mock
  *     for. A class is a constructor function.
  * @private
- * @_suppress {strictMissingProperties} Part of the go/strict_warnings_migration
+ * suppress {strictMissingProperties} Part of the go/strict_warnings_migration
  */
 goog.labs.mock.MockObjectManager_ = function(objOrClass) {
   goog.labs.mock.MockObjectManager_.base(this, 'constructor');
@@ -698,7 +698,7 @@ goog.labs.mock.MockSpyManager_.prototype.getNextBinding = function(
  * @extends {goog.labs.mock.MockManager_}
  * @param {!Function} func The function to set up the mock for.
  * @private
- * @_suppress {strictMissingProperties} Part of the go/strict_warnings_migration
+ * suppress {strictMissingProperties} Part of the go/strict_warnings_migration
  */
 goog.labs.mock.MockFunctionManager_ = function(func) {
   goog.labs.mock.MockFunctionManager_.base(this, 'constructor');
@@ -880,7 +880,7 @@ goog.labs.mock.StubBinderImpl_.prototype.thenReturn = function(value) {
  *     });
  * @param {!Object} mockObject The mocked object.
  * @return {?} The property binder. Return type {?} to avoid compilation errors.
- * @_suppress {strictMissingProperties} Part of the go/strict_warnings_migration
+ * suppress {strictMissingProperties} Part of the go/strict_warnings_migration
  */
 goog.labs.mock.when = function(mockObject) {
   goog.asserts.assert(mockObject.$stubBinder, 'Stub binder cannot be null!');

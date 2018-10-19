@@ -120,7 +120,7 @@ goog.ui.TableSorter.prototype.canDecorate = function(element) {
 
 /**
  * @override
- * @_suppress {strictMissingProperties} Part of the go/strict_warnings_migration
+ * suppress {strictMissingProperties} Part of the go/strict_warnings_migration
  */
 goog.ui.TableSorter.prototype.enterDocument = function() {
   goog.ui.TableSorter.superClass_.enterDocument.call(this);
@@ -218,7 +218,7 @@ goog.ui.TableSorter.prototype.sort_ = function(e) {
  * @param {number} column The column to sort by.
  * @param {boolean=} opt_reverse Whether to sort in reverse.
  * @return {boolean} Whether the sort was executed.
- * @_suppress {strictMissingProperties} Part of the go/strict_warnings_migration
+ * suppress {strictMissingProperties} Part of the go/strict_warnings_migration
  */
 goog.ui.TableSorter.prototype.sort = function(column, opt_reverse) {
   var sortFunction = this.getSortFunction(column);

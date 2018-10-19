@@ -133,7 +133,7 @@ goog.events.MouseWheelHandler.prototype.setMaxDeltaY = function(maxDeltaY) {
 /**
  * Handles the events on the element.
  * @param {goog.events.BrowserEvent} e The underlying browser event.
- * @_suppress {strictMissingProperties} Part of the go/strict_warnings_migration
+ * suppress {strictMissingProperties} Part of the go/strict_warnings_migration
  */
 goog.events.MouseWheelHandler.prototype.handleEvent = function(e) {
   var deltaX = 0;

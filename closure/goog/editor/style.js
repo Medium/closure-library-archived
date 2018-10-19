@@ -128,7 +128,7 @@ goog.editor.style.SELECTABLE_INPUT_TYPES_ =
  * Prevent the default action on mousedown events.
  * @param {goog.events.Event} e The mouse down event.
  * @private
- * @_suppress {strictMissingProperties} Part of the go/strict_warnings_migration
+ * suppress {strictMissingProperties} Part of the go/strict_warnings_migration
  */
 goog.editor.style.cancelMouseDownHelper_ = function(e) {
   var targetTagName = e.target.tagName;

@@ -319,7 +319,7 @@ goog.dom.asserts.debugStringForType_ = function(value) {
  * @param {?Object} o
  * @return {!Window}
  * @private
- * @_suppress {strictMissingProperties} ownerDocument not defined on Object
+ * suppress {strictMissingProperties} ownerDocument not defined on Object
  */
 goog.dom.asserts.getWindow_ = function(o) {
   var doc = o && o.ownerDocument;

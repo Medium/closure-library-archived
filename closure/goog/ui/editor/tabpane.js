@@ -179,7 +179,7 @@ goog.ui.editor.TabPane.prototype.enterDocument = function() {
  * Handles a tab change.
  * @param {goog.events.Event} e The browser change event.
  * @private
- * @_suppress {strictMissingProperties} Part of the go/strict_warnings_migration
+ * suppress {strictMissingProperties} Part of the go/strict_warnings_migration
  */
 goog.ui.editor.TabPane.prototype.handleTabSelect_ = function(e) {
   var tab = /** @type {goog.ui.Tab} */ (e.target);

@@ -251,7 +251,7 @@ goog.dom.TextRangeIterator.prototype.skipTag = function() {
 
 /**
  * @override
- * @_suppress {strictMissingProperties} Part of the go/strict_warnings_migration
+ * suppress {strictMissingProperties} Part of the go/strict_warnings_migration
  */
 goog.dom.TextRangeIterator.prototype.copyFrom = function(other) {
   this.startNode_ = other.startNode_;

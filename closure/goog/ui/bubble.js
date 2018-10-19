@@ -344,7 +344,7 @@ goog.ui.Bubble.prototype.getComputedAnchoredPosition = function(anchorElement) {
  * @param {Element} anchorElement The element to which the button is attached.
  * @return {goog.positioning.Corner} The pinned corner.
  * @private
- * @_suppress {strictMissingProperties} Part of the go/strict_warnings_migration
+ * suppress {strictMissingProperties} Part of the go/strict_warnings_migration
  */
 goog.ui.Bubble.prototype.computePinnedCorner_ = function(anchorElement) {
   var doc = this.getDomHelper().getOwnerDocument(anchorElement);
@@ -376,7 +376,7 @@ goog.ui.Bubble.prototype.computePinnedCorner_ = function(anchorElement) {
  * @return {!goog.math.Box} the computed margin. Only left or right fields are
  *     non-zero, but they may be negative.
  * @private
- * @_suppress {strictMissingProperties} Part of the go/strict_warnings_migration
+ * suppress {strictMissingProperties} Part of the go/strict_warnings_migration
  */
 goog.ui.Bubble.prototype.createMarginForCorner_ = function(corner) {
   var margin = new goog.math.Box(0, 0, 0, 0);
@@ -395,7 +395,7 @@ goog.ui.Bubble.prototype.createMarginForCorner_ = function(corner) {
  * @return {!goog.html.SafeHtml} The HTML string to place inside the
  *     bubble's popup.
  * @private
- * @_suppress {strictMissingProperties} Part of the go/strict_warnings_migration
+ * suppress {strictMissingProperties} Part of the go/strict_warnings_migration
  */
 goog.ui.Bubble.prototype.computeHtmlForCorner_ = function(corner) {
   var bubbleTopClass;

@@ -113,7 +113,7 @@ goog.ui.PopupMenu.prototype.currentAnchor_ = null;
  * made from HR elements.
  * @param {?Element} element Element to decorate.
  * @override
- * @_suppress {strictMissingProperties} Part of the go/strict_warnings_migration
+ * suppress {strictMissingProperties} Part of the go/strict_warnings_migration
  */
 goog.ui.PopupMenu.prototype.decorateInternal = function(element) {
   goog.ui.PopupMenu.superClass_.decorateInternal.call(this, element);
@@ -317,7 +317,7 @@ goog.ui.PopupMenu.prototype.getAttachedElement = function() {
  * and one with the KEYDOWN event type for accessibility purposes.
  * @param {?Object} target The target to attach an event to.
  * @private
- * @_suppress {strictMissingProperties} Part of the go/strict_warnings_migration
+ * suppress {strictMissingProperties} Part of the go/strict_warnings_migration
  */
 goog.ui.PopupMenu.prototype.attachEvent_ = function(target) {
   this.getHandler().listen(
@@ -367,7 +367,7 @@ goog.ui.PopupMenu.prototype.detach = function(element) {
  * Detaches an event listener to a target
  * @param {!Object} target The target to detach events from.
  * @private
- * @_suppress {strictMissingProperties} Part of the go/strict_warnings_migration
+ * suppress {strictMissingProperties} Part of the go/strict_warnings_migration
  */
 goog.ui.PopupMenu.prototype.detachEvent_ = function(target) {
   this.getHandler().unlisten(
@@ -456,7 +456,7 @@ goog.ui.PopupMenu.prototype.showWithPosition = function(
  * @param {number} x The client-X associated with the show event.
  * @param {number} y The client-Y associated with the show event.
  * @protected
- * @_suppress {strictMissingProperties} Part of the go/strict_warnings_migration
+ * suppress {strictMissingProperties} Part of the go/strict_warnings_migration
  */
 goog.ui.PopupMenu.prototype.showMenu = function(target, x, y) {
   var position = goog.isDef(target.targetCorner_) ?
@@ -588,7 +588,7 @@ goog.ui.PopupMenu.prototype.onTargetKeyboardAction_ = function(e) {
  * Handles a browser event on one of the popup targets.
  * @param {?goog.events.BrowserEvent} e The browser event.
  * @private
- * @_suppress {strictMissingProperties} Part of the go/strict_warnings_migration
+ * suppress {strictMissingProperties} Part of the go/strict_warnings_migration
  */
 goog.ui.PopupMenu.prototype.onTargetActivation_ = function(e) {
   var keys = this.targets_.getKeys();

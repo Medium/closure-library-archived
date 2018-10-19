@@ -178,7 +178,7 @@ goog.ui.RichTextSpellChecker.prototype.createDom = function() {
  * Decorates the element for the UI component.
  * @param {Element} element Element to decorate.
  * @override
- * @_suppress {strictMissingProperties} Part of the go/strict_warnings_migration
+ * suppress {strictMissingProperties} Part of the go/strict_warnings_migration
  */
 goog.ui.RichTextSpellChecker.prototype.decorateInternal = function(element) {
   this.setElementInternal(element);
@@ -390,7 +390,7 @@ goog.ui.RichTextSpellChecker.prototype.setExcludeMarker = function(marker) {
  * @param {Node} node The node to check.
  * @return {boolean} Whether the node is excluded.
  * @private
- * @_suppress {strictMissingProperties} Part of the go/strict_warnings_migration
+ * suppress {strictMissingProperties} Part of the go/strict_warnings_migration
  */
 goog.ui.RichTextSpellChecker.prototype.isExcluded_ = function(node) {
   if (this.excludeMarker && node.className) {
@@ -414,7 +414,7 @@ goog.ui.RichTextSpellChecker.prototype.isExcluded_ = function(node) {
  * @param {Node} node Node where to start.
  * @return {goog.ui.AbstractSpellChecker.AsyncResult|undefined} Result code.
  * @private
- * @_suppress {strictMissingProperties} Part of the go/strict_warnings_migration
+ * suppress {strictMissingProperties} Part of the go/strict_warnings_migration
  */
 goog.ui.RichTextSpellChecker.prototype.processNode_ = function(node) {
   delete this.currentNode_;
@@ -573,7 +573,7 @@ goog.ui.RichTextSpellChecker.prototype.resume = function() {
  * consolidates text nodes.
  * @param {Node} node node on which to recurse.
  * @private
- * @_suppress {strictMissingProperties} Part of the go/strict_warnings_migration
+ * suppress {strictMissingProperties} Part of the go/strict_warnings_migration
  */
 goog.ui.RichTextSpellChecker.prototype.restoreNode_ = function(node) {
   while (node) {
@@ -652,7 +652,7 @@ goog.ui.RichTextSpellChecker.prototype.getElementProperties = function(status) {
  * Handler for click events.
  * @param {goog.events.BrowserEvent} event Event object.
  * @private
- * @_suppress {strictMissingProperties} Part of the go/strict_warnings_migration
+ * suppress {strictMissingProperties} Part of the go/strict_warnings_migration
  */
 goog.ui.RichTextSpellChecker.prototype.onWordClick_ = function(event) {
   var target = /** @type {Element} */ (event.target);

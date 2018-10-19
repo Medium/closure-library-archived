@@ -158,7 +158,7 @@ goog.ui.InputDatePicker.prototype.setDate = function(date) {
  * Sets the value of the input element.  This can be overridden to support
  * alternative types of input setting.
  * @param {string} value The value to set.
- * @_suppress {strictMissingProperties} Part of the go/strict_warnings_migration
+ * suppress {strictMissingProperties} Part of the go/strict_warnings_migration
  */
 goog.ui.InputDatePicker.prototype.setInputValue = function(value) {
   var el = this.getElement();
@@ -175,7 +175,7 @@ goog.ui.InputDatePicker.prototype.setInputValue = function(value) {
  * Returns the value of the input element.  This can be overridden to support
  * alternative types of input getting.
  * @return {string} The input value.
- * @_suppress {strictMissingProperties} Part of the go/strict_warnings_migration
+ * suppress {strictMissingProperties} Part of the go/strict_warnings_migration
  */
 goog.ui.InputDatePicker.prototype.getInputValue = function() {
   var el = this.getElement();

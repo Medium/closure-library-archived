@@ -255,7 +255,7 @@ goog.labs.events.NonDisposableEventTarget.prototype.assertInitialized_ =
  * @return {boolean} If anyone called preventDefault on the event object (or
  *     if any of the listeners returns false) this will also return false.
  * @private
- * @_suppress {strictMissingProperties} Part of the go/strict_warnings_migration
+ * suppress {strictMissingProperties} Part of the go/strict_warnings_migration
  */
 goog.labs.events.NonDisposableEventTarget.dispatchEventInternal_ = function(
     target, e, opt_ancestorsTree) {

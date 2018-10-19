@@ -288,7 +288,7 @@ goog.graphics.VmlGraphics.prototype.append_ = function(element, opt_group) {
  * @param {goog.graphics.StrokeAndFillElement} element The element wrapper.
  * @param {goog.graphics.Fill?} fill The fill object.
  * @override
- * @_suppress {strictMissingProperties} Part of the go/strict_warnings_migration
+ * suppress {strictMissingProperties} Part of the go/strict_warnings_migration
  */
 goog.graphics.VmlGraphics.prototype.setElementFill = function(element, fill) {
   var vmlElement = element.getElement();
@@ -404,7 +404,7 @@ goog.graphics.VmlGraphics.prototype.setElementTransform = function(
  * @param {!goog.graphics.AffineTransform} affineTransform The
  *     transformation applied to this element.
  * @override
- * @_suppress {strictMissingProperties} Part of the go/strict_warnings_migration
+ * suppress {strictMissingProperties} Part of the go/strict_warnings_migration
  */
 goog.graphics.VmlGraphics.prototype.setElementAffineTransform = function(
     element, affineTransform) {
@@ -436,7 +436,7 @@ goog.graphics.VmlGraphics.prototype.setElementAffineTransform = function(
  * @private
  */
 goog.graphics.VmlGraphics.removeSkew_ = function(element) {
-  goog.array.forEach(element.childNodes, /** @_suppress {strictMissingProperties} Part of the go/strict_warnings_migration */
+  goog.array.forEach(element.childNodes, /** suppress {strictMissingProperties} Part of the go/strict_warnings_migration */
                                          function(child) {
     if (child.tagName == 'skew') {
       element.removeChild(child);
@@ -452,7 +452,7 @@ goog.graphics.VmlGraphics.removeSkew_ = function(element) {
  */
 goog.graphics.VmlGraphics.removeFill_ = function(element) {
   element.fillcolor = '';
-  goog.array.forEach(element.childNodes, /** @_suppress {strictMissingProperties} Part of the go/strict_warnings_migration */
+  goog.array.forEach(element.childNodes, /** suppress {strictMissingProperties} Part of the go/strict_warnings_migration */
                                          function(child) {
     if (child.tagName == 'fill') {
       element.removeChild(child);
@@ -684,7 +684,7 @@ goog.graphics.VmlGraphics.prototype.setSize = function(
  * @return {!goog.math.Size} Returns the number of pixels spanned by the
  *     surface.
  * @override
- * @_suppress {strictMissingProperties} Part of the go/strict_warnings_migration
+ * suppress {strictMissingProperties} Part of the go/strict_warnings_migration
  */
 goog.graphics.VmlGraphics.prototype.getPixelSize = function() {
   var el = this.getElement();
