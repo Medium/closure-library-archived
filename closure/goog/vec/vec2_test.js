@@ -4,8 +4,9 @@
 goog.provide('goog.vec.Vec2Test');
 goog.setTestOnly('goog.vec.Vec2Test');
 
-goog.require('goog.testing.jsunit');
+goog.require('goog.vec.Float32Array');
 goog.require('goog.vec.Vec2');
+goog.require('goog.testing.jsunit');
 
 function testConstructor() {
   var v = goog.vec.Vec2.createFloat32();

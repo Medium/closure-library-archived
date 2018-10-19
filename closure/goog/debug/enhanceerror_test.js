@@ -126,7 +126,7 @@ function throwNpe() {
 }
 
 function throwError() {
-  throw new Error('an error');
+  throw Error('an error');
 }
 
 function throwEnhancedError() {

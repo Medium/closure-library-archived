@@ -29,8 +29,6 @@ goog.require('goog.dom.classlist');
 goog.require('goog.object');
 goog.require('goog.ui.ControlRenderer');
 
-goog.forwardDeclare('goog.ui.Checkbox.State');
-
 
 
 /**
@@ -192,5 +190,5 @@ goog.ui.CheckboxRenderer.prototype.getClassForCheckboxState = function(state) {
   } else if (state == goog.ui.Checkbox.State.UNDETERMINED) {
     return goog.getCssName(baseClass, 'undetermined');
   }
-  throw new Error('Invalid checkbox state: ' + state);
+  throw Error('Invalid checkbox state: ' + state);
 };

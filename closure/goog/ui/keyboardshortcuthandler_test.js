@@ -98,16 +98,6 @@ function testAllowsSingleLetterKeyBindingsSpecifiedAsString() {
   listener.$verify();
 }
 
-function testAllowsSingleLetterKeyBindingsSpecifiedAsStringKeyValue() {
-  listener.shortcutFired('lettergee');
-  listener.$replay();
-
-  handler.registerShortcut('lettergee', 'g');
-  fire('g');
-
-  listener.$verify();
-}
-
 function testAllowsSingleLetterKeyBindingsSpecifiedAsKeyCode() {
   listener.shortcutFired('lettergee');
   listener.$replay();
@@ -123,7 +113,6 @@ function testDoesntFireWhenWrongKeyIsPressed() {
 
   handler.registerShortcut('letterjay', 'j');
   fire(KeyCodes.G);
-  fire('g');
 
   listener.$verify();
 }
@@ -134,16 +123,6 @@ function testAllowsControlAndLetterSpecifiedAsAString() {
 
   handler.registerShortcut('lettergee', 'ctrl+g');
   fire(KeyCodes.G, {ctrlKey: true});
-
-  listener.$verify();
-}
-
-function testAllowsControlAndLetterSpecifiedAsAStringKeyValue() {
-  listener.shortcutFired('lettergee');
-  listener.$replay();
-
-  handler.registerShortcut('lettergee', 'ctrl+g');
-  fire('g', {ctrlKey: true});
 
   listener.$verify();
 }
@@ -230,9 +209,7 @@ function testPreventsDefaultOnReturnFalse() {
   handler.registerShortcut('x', 'x');
   var key = goog.events.listen(
       handler, goog.ui.KeyboardShortcutHandler.EventType.SHORTCUT_TRIGGERED,
-      function(event) {
-        return false;
-      });
+      function(event) { return false });
 
   assertFalse(
       'return false in listener must prevent default', fire(KeyCodes.X));
@@ -372,17 +349,17 @@ function testCanRemoveOneHandler() {
 
   // register 2 handlers, then remove quitvi
   handler.registerShortcut(
-      'quitvi', KeyCodes.SEMICOLON, Modifiers.SHIFT, KeyCodes.Q, Modifiers.NONE,
-      KeyCodes.ONE, Modifiers.SHIFT);
+      'quitvi', KeyCodes.COLON, Modifiers.NONE, KeyCodes.Q, Modifiers.NONE,
+      KeyCodes.EXCLAMATION, Modifiers.NONE);
   handler.registerShortcut('letterex', 'x');
   handler.unregisterShortcut(
-      KeyCodes.SEMICOLON, Modifiers.SHIFT, KeyCodes.Q, Modifiers.NONE,
-      KeyCodes.ONE, Modifiers.SHIFT);
+      KeyCodes.COLON, Modifiers.NONE, KeyCodes.Q, Modifiers.NONE,
+      KeyCodes.EXCLAMATION, Modifiers.NONE);
 
   // call the "quit VI" keycodes, even though it is removed
-  fire(KeyCodes.SEMICOLON, Modifiers.SHIFT);
+  fire(KeyCodes.COLON);
   fire(KeyCodes.Q);
-  fire(KeyCodes.ONE, Modifiers.SHIFT);
+  fire(KeyCodes.EXCLAMATION);
 
   // press the letter x
   fire(KeyCodes.X);
@@ -748,32 +725,13 @@ function testGeckoShortcuts() {
 
 function testWindows_multiKeyShortcuts() {
   if (goog.userAgent.WINDOWS) {
-    listener.shortcutFired('nextComment');
+    listener.shortcutFired('1');
     listener.$replay();
 
-    handler.registerShortcut('nextComment', 'ctrl+alt+n ctrl+alt+c');
-    // We need to specify a keyPressKeyCode of 0 here because on Windows,
-    // keystrokes that don't produce printable characters don't cause a keyPress
-    // event to fire.
-    assertFalse(fireAltGraphKey(KeyCodes.N, 0, {ctrlKey: true, altKey: true}));
-    assertFalse(fireAltGraphKey(KeyCodes.C, 0, {ctrlKey: true, altKey: true}));
-    listener.$verify();
-  }
-}
+    handler.registerShortcut('1', 'ctrl+alt+n c');
+    fire(KeyCodes.N, {ctrlKey: true, altKey: true});
+    fire(KeyCodes.C);
 
-function testWindows_multikeyShortcuts_repeatedKeyDoesntInterfere() {
-  if (goog.userAgent.WINDOWS) {
-    listener.shortcutFired('announceCursorLocation');
-    listener.$replay();
-
-    handler.registerShortcut('announceAnchorText', 'ctrl+alt+a ctrl+alt+a');
-    handler.registerShortcut('announceCursorLocation', 'ctrl+alt+a ctrl+alt+l');
-
-    // We need to specify a keyPressKeyCode of 0 here because on Windows,
-    // keystrokes that don't produce printable characters don't cause a keyPress
-    // event to fire.
-    assertFalse(fireAltGraphKey(KeyCodes.A, 0, {ctrlKey: true, altKey: true}));
-    assertFalse(fireAltGraphKey(KeyCodes.L, 0, {ctrlKey: true, altKey: true}));
     listener.$verify();
   }
 }
@@ -782,12 +740,12 @@ function testWindows_multikeyShortcuts_polishKey() {
   if (goog.userAgent.WINDOWS) {
     listener.$replay();
 
-    handler.registerShortcut('announceCursorLocation', 'ctrl+alt+a ctrl+alt+l');
+    handler.registerShortcut('announceCursorLocation', 'ctrl+alt+a l');
 
     // If a Polish key is a subsection of a keyboard shortcut, then
     // the key should still be written.
-    assertTrue(
-        fireAltGraphKey(KeyCodes.A, 0x0105, {ctrlKey: true, altKey: true}));
+    assertTrue(fireAltGraphKey(
+        KeyCodes.A, 0x0104, {ctrlKey: true, altKey: true}));
     listener.$verify();
   }
 }
@@ -810,18 +768,4 @@ function testParseStringShortcut_unknownKey() {
 function testParseStringShortcut_resetKeyCode() {
   var strokes = goog.ui.KeyboardShortcutHandler.parseStringShortcut('A Shift');
   assertNull('The second stroke only has a modifier key.', strokes[1].keyCode);
-}
-
-function testOsxGeckoCopyShortcuts() {
-  // Ensures that Meta+C still fires a shortcut. In legacy versions of Closure,
-  // we had to listen for Meta+C/X/V on keyup instead of keydown due to a bug in
-  // Gecko 1.8 on OS X. This is a sanity check to ensure that behavior has not
-  // regressed.
-  listener.shortcutFired('copy');
-  listener.$replay();
-
-  handler.registerShortcut('copy', [KeyCodes.C, Modifiers.META]);
-  fire(KeyCodes.C, {metaKey: true});
-
-  listener.$verify();
 }
