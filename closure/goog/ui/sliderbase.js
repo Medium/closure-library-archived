@@ -429,7 +429,7 @@ goog.ui.SliderBase.prototype.decorateInternal = function(element) {
  * Called when the DOM for the component is for sure in the document.
  * Subclasses should override this method to set this element's role.
  * @override
- * suppress {strictMissingProperties} Part of the go/strict_warnings_migration
+ * @_suppress {strictMissingProperties} Part of the go/strict_warnings_migration
  */
 goog.ui.SliderBase.prototype.enterDocument = function() {
   goog.ui.SliderBase.superClass_.enterDocument.call(this);
@@ -565,7 +565,7 @@ goog.ui.SliderBase.prototype.handleBeforeDrag_ = function(e) {
  * the "-dragging" CSS classes on the slider and thumb.
  * @param {goog.fx.DragEvent} e The drag event used to drag the thumb.
  * @private
- * suppress {strictMissingProperties} Part of the go/strict_warnings_migration
+ * @_suppress {strictMissingProperties} Part of the go/strict_warnings_migration
  */
 goog.ui.SliderBase.prototype.handleThumbDragStartEnd_ = function(e) {
   var isDragStart = e.type == goog.fx.Dragger.EventType.START;
@@ -1650,7 +1650,7 @@ goog.ui.SliderBase.prototype.isEnabled = function() {
  * @return {number} Returns the element's offsetLeft, accounting for RTL if
  *     flipForRtl_ is true.
  * @private
- * suppress {strictMissingProperties} Part of the go/strict_warnings_migration
+ * @_suppress {strictMissingProperties} Part of the go/strict_warnings_migration
  */
 goog.ui.SliderBase.prototype.getOffsetStart_ = function(element) {
   return this.flipForRtl_ ? goog.style.bidi.getOffsetStart(element) :
