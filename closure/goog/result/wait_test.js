@@ -5,10 +5,9 @@ goog.provide('goog.result.waitTest');
 goog.setTestOnly('goog.result.waitTest');
 
 goog.require('goog.Timer');
-goog.require('goog.result');
 goog.require('goog.result.SimpleResult');
+goog.require('goog.result');
 goog.require('goog.testing.MockClock');
-goog.require('goog.testing.PropertyReplacer');
 goog.require('goog.testing.jsunit');
 goog.require('goog.testing.recordFunction');
 

@@ -11,11 +11,9 @@
 goog.provide('goog.vec.mat4fTest');
 goog.setTestOnly('goog.vec.mat4fTest');
 
-goog.require('goog.testing.jsunit');
 goog.require('goog.vec.Quaternion');
 goog.require('goog.vec.mat4f');
-goog.require('goog.vec.vec3f');
-goog.require('goog.vec.vec4f');
+goog.require('goog.testing.jsunit');
 
 var randommat4f = goog.vec.mat4f.setFromValues(goog.vec.mat4f.create(),
     0.8025078773498535,
@@ -475,7 +473,7 @@ function testMakeRotate() {
 
 function testMakeRotateX() {
   var m0 = goog.vec.mat4f.create();
-  var m1 = goog.vec.mat4f.create();
+  var m1 = goog.vec.mat4f.create()
 
   goog.vec.mat4f.makeRotateX(m0, Math.PI / 7);
   goog.vec.mat4f.makeRotate(m1, Math.PI / 7, 1, 0, 0);
@@ -484,7 +482,7 @@ function testMakeRotateX() {
 
 function testMakeRotateY() {
   var m0 = goog.vec.mat4f.create();
-  var m1 = goog.vec.mat4f.create();
+  var m1 = goog.vec.mat4f.create()
 
   goog.vec.mat4f.makeRotateY(m0, Math.PI / 7);
   goog.vec.mat4f.makeRotate(m1, Math.PI / 7, 0, 1, 0);
@@ -493,7 +491,7 @@ function testMakeRotateY() {
 
 function testMakeRotateZ() {
   var m0 = goog.vec.mat4f.create();
-  var m1 = goog.vec.mat4f.create();
+  var m1 = goog.vec.mat4f.create()
 
   goog.vec.mat4f.makeRotateZ(m0, Math.PI / 7);
   goog.vec.mat4f.makeRotate(m1, Math.PI / 7, 0, 0, 1);
@@ -541,7 +539,7 @@ function testRotate() {
 
 function testRotateX() {
   var m0 = goog.vec.mat4f.create();
-  var m1 = goog.vec.mat4f.setFromArray(goog.vec.mat4f.create(), randommat4f);
+  var m1 = goog.vec.mat4f.setFromArray(goog.vec.mat4f.create(), randommat4f)
 
   goog.vec.mat4f.makeRotateX(m0, Math.PI / 7);
   goog.vec.mat4f.multMat(m1, m0, m0);
@@ -551,7 +549,7 @@ function testRotateX() {
 
 function testRotateY() {
   var m0 = goog.vec.mat4f.create();
-  var m1 = goog.vec.mat4f.setFromArray(goog.vec.mat4f.create(), randommat4f);
+  var m1 = goog.vec.mat4f.setFromArray(goog.vec.mat4f.create(), randommat4f)
 
   goog.vec.mat4f.makeRotateY(m0, Math.PI / 7);
   goog.vec.mat4f.multMat(m1, m0, m0);
@@ -561,7 +559,7 @@ function testRotateY() {
 
 function testRotateZ() {
   var m0 = goog.vec.mat4f.create();
-  var m1 = goog.vec.mat4f.setFromArray(goog.vec.mat4f.create(), randommat4f);
+  var m1 = goog.vec.mat4f.setFromArray(goog.vec.mat4f.create(), randommat4f)
 
   goog.vec.mat4f.makeRotateZ(m0, Math.PI / 7);
   goog.vec.mat4f.multMat(m1, m0, m0);

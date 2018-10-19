@@ -11,8 +11,9 @@
 goog.provide('goog.vec.vec3dTest');
 goog.setTestOnly('goog.vec.vec3dTest');
 
-goog.require('goog.testing.jsunit');
+goog.require('goog.vec.Float64Array');
 goog.require('goog.vec.vec3d');
+goog.require('goog.testing.jsunit');
 
 function testCreate() {
   var v = goog.vec.vec3d.create();

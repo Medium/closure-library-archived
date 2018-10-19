@@ -66,12 +66,10 @@ goog.testing.FunctionMock = function(opt_functionName, opt_strictness) {
  * @param {number=} opt_strictness One of goog.testing.Mock.LOOSE or
  *     goog.testing.Mock.STRICT. The default is STRICT.
  * @return {!goog.testing.MockInterface} The mocked method.
- * @suppress {strictMissingProperties} $propertyReplacer_ and $tearDown are
- *     not defined on goog.testing.MockInterface
  */
 goog.testing.MethodMock = function(scope, functionName, opt_strictness) {
   if (!(functionName in scope)) {
-    throw new Error(functionName + ' is not a property of the given scope.');
+    throw Error(functionName + ' is not a property of the given scope.');
   }
 
   var fn = goog.testing.FunctionMock(functionName, opt_strictness);

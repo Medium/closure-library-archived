@@ -266,18 +266,18 @@ goog.object.getKeys = function(obj) {
  *     (as strings, or numbers, for array-like objects).  Can also be
  *     specified as a single array of keys.
  * @return {*} The resulting value.  If, at any point, the value for a key
- *     in the current object is null or undefined, returns undefined.
+ *     is undefined, returns undefined.
  */
 goog.object.getValueByKeys = function(obj, var_args) {
   var isArrayLike = goog.isArrayLike(var_args);
-  var keys = isArrayLike ?
-      /** @type {!IArrayLike<number|string>} */ (var_args) :
-      arguments;
+  var keys = isArrayLike ? var_args : arguments;
 
   // Start with the 2nd parameter for the variable parameters syntax.
   for (var i = isArrayLike ? 0 : 1; i < keys.length; i++) {
-    if (obj == null) return undefined;
     obj = obj[keys[i]];
+    if (!goog.isDef(obj)) {
+      break;
+    }
   }
 
   return obj;
@@ -407,7 +407,7 @@ goog.object.remove = function(obj, key) {
  */
 goog.object.add = function(obj, key, val) {
   if (obj !== null && key in obj) {
-    throw new Error('The object already contains the key "' + key + '"');
+    throw Error('The object already contains the key "' + key + '"');
   }
   goog.object.set(obj, key, val);
 };
@@ -599,9 +599,8 @@ goog.object.PROTOTYPE_FIELDS_ = [
  *
  * @param {Object} target The object to modify. Existing properties will be
  *     overwritten if they are also present in one of the objects in
- *     `var_args`.
- * @param {...(Object|null|undefined)} var_args The objects from which values
- *     will be copied.
+ *     {@code var_args}.
+ * @param {...Object} var_args The objects from which values will be copied.
  */
 goog.object.extend = function(target, var_args) {
   var key, source;
@@ -643,7 +642,7 @@ goog.object.create = function(var_args) {
   }
 
   if (argLength % 2) {
-    throw new Error('Uneven number of arguments');
+    throw Error('Uneven number of arguments');
   }
 
   var rv = {};
@@ -710,20 +709,17 @@ goog.object.isImmutableView = function(obj) {
 /**
  * Get all properties names on a given Object regardless of enumerability.
  *
- * <p> If the browser does not support `Object.getOwnPropertyNames` nor
- * `Object.getPrototypeOf` then this is equivalent to using
- * `goog.object.getKeys`
+ * <p> If the browser does not support {@code Object.getOwnPropertyNames} nor
+ * {@code Object.getPrototypeOf} then this is equivalent to using {@code
+ * goog.object.getKeys}
  *
  * @param {?Object} obj The object to get the properties of.
  * @param {boolean=} opt_includeObjectPrototype Whether properties defined on
- *     `Object.prototype` should be included in the result.
- * @param {boolean=} opt_includeFunctionPrototype Whether properties defined on
- *     `Function.prototype` should be included in the result.
+ *     {@code Object.prototype} should be included in the result.
  * @return {!Array<string>}
  * @public
  */
-goog.object.getAllPropertyNames = function(
-    obj, opt_includeObjectPrototype, opt_includeFunctionPrototype) {
+goog.object.getAllPropertyNames = function(obj, opt_includeObjectPrototype) {
   if (!obj) {
     return [];
   }
@@ -739,8 +735,7 @@ goog.object.getAllPropertyNames = function(
   // Traverse the prototype chain and add all properties to the visited set.
   var proto = obj;
   while (proto &&
-         (proto !== Object.prototype || !!opt_includeObjectPrototype) &&
-         (proto !== Function.prototype || !!opt_includeFunctionPrototype)) {
+         (proto !== Object.prototype || !!opt_includeObjectPrototype)) {
     var names = Object.getOwnPropertyNames(proto);
     for (var i = 0; i < names.length; i++) {
       visitedSet[names[i]] = true;

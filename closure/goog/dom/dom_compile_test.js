@@ -12,7 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-goog.provide('goog.dom.DomCompileTest');
 goog.setTestOnly();
 
 
@@ -31,13 +30,6 @@ function testDomTagNameTypes() {
 
   /** @type {!IArrayLike<!HTMLAnchorElement>} */
   var anchors = goog.dom.getElementsByTagNameAndClass(goog.dom.TagName.A);
-
-  // Check that goog.dom.HtmlElement is assignable to HTMLElement.
-  /** @type {!HTMLElement} */
-  var b = goog.dom.createElement(goog.dom.TagName.B);
-
-  /** @type {?HTMLAnchorElement} */
-  var anchor = goog.dom.getElementByTagNameAndClass(goog.dom.TagName.A);
 }
 
 
@@ -53,7 +45,4 @@ function testDomHelperTagNameTypes() {
 
   /** @type {!IArrayLike<!HTMLAnchorElement>} */
   var anchors = dom.getElementsByTagNameAndClass(goog.dom.TagName.A);
-
-  /** @type {?HTMLAnchorElement} */
-  var anchor = dom.getElementByTagNameAndClass(goog.dom.TagName.A);
 }

@@ -1272,17 +1272,17 @@ function testCreateXhrIo() {
 
 
 function testSetParser() {
-  var recordParse = goog.testing.recordFunction(JSON.parse);
+  var recordUnsafeParse = goog.testing.recordFunction(goog.json.unsafeParse);
   var parser = {};
-  parser.parse = recordParse;
+  parser.parse = recordUnsafeParse;
   browserChannel.setParser(parser);
 
   connect();
-  assertEquals(3, recordParse.getCallCount());
+  assertEquals(3, recordUnsafeParse.getCallCount());
 
-  var call3 = recordParse.popLastCall();
-  var call2 = recordParse.popLastCall();
-  var call1 = recordParse.popLastCall();
+  var call3 = recordUnsafeParse.popLastCall();
+  var call2 = recordUnsafeParse.popLastCall();
+  var call1 = recordUnsafeParse.popLastCall();
 
   assertEquals(1, call1.getArguments().length);
   assertEquals('["b"]', call1.getArgument(0));
