@@ -537,7 +537,7 @@ goog.ui.ac.Renderer.prototype.isVisible = function() {
 /**
  * Sets the 'active' class of the nth item.
  * @param {number} index Index of the item to highlight.
- * @_suppress {strictMissingProperties} Part of the go/strict_warnings_migration
+ * @suppress {strictMissingProperties} Part of the go/strict_warnings_migration
  */
 goog.ui.ac.Renderer.prototype.hiliteRow = function(index) {
   var row =
@@ -582,7 +582,7 @@ goog.ui.ac.Renderer.prototype.hiliteNone = function() {
  * Sets the 'active' class of the item with a given id.
  * @param {number} id Id of the row to hilight. If id is -1 then no rows get
  *     hilited.
- * @_suppress {strictMissingProperties} Part of the go/strict_warnings_migration
+ * @suppress {strictMissingProperties} Part of the go/strict_warnings_migration
  */
 goog.ui.ac.Renderer.prototype.hiliteId = function(id) {
   if (id == -1) {
@@ -650,7 +650,7 @@ goog.ui.ac.Renderer.prototype.maybeCreateElement_ = function() {
 /**
  * Redraw (or draw if this is the first call) the rendered auto-complete drop
  * down.
- * @_suppress {strictMissingProperties} Part of the go/strict_warnings_migration
+ * @suppress {strictMissingProperties} Part of the go/strict_warnings_migration
  */
 goog.ui.ac.Renderer.prototype.redraw = function() {
   // Create the element if it doesn't yet exist
@@ -826,7 +826,7 @@ goog.ui.ac.Renderer.prototype.disposeInternal = function() {
  * @param {string} token Token to highlight.
  * @param {Node} node The node to render into.
  * @private
- * @_suppress {strictMissingProperties} Part of the go/strict_warnings_migration
+ * @suppress {strictMissingProperties} Part of the go/strict_warnings_migration
  */
 goog.ui.ac.Renderer.prototype.renderRowContents_ = function(row, token, node) {
   goog.dom.setTextContent(node, row.data.toString());
@@ -1065,7 +1065,7 @@ goog.ui.ac.Renderer.prototype.getRowFromEventTarget_ = function(et) {
  * which then makes a callback to select the correct row.
  * @param {goog.events.Event} e Browser event object.
  * @private
- * @_suppress {strictMissingProperties} Part of the go/strict_warnings_migration
+ * @suppress {strictMissingProperties} Part of the go/strict_warnings_migration
  */
 goog.ui.ac.Renderer.prototype.handleClick_ = function(e) {
   var index = this.getRowFromEventTarget_(/** @type {Element} */ (e.target));
@@ -1097,7 +1097,7 @@ goog.ui.ac.Renderer.prototype.handleMouseDown_ = function(e) {
  * duplicating the code
  * @param {goog.events.Event} e Browser event object.
  * @private
- * @_suppress {strictMissingProperties} Part of the go/strict_warnings_migration
+ * @suppress {strictMissingProperties} Part of the go/strict_warnings_migration
  */
 goog.ui.ac.Renderer.prototype.handleMouseOver_ = function(e) {
   var index = this.getRowFromEventTarget_(/** @type {Element} */ (e.target));

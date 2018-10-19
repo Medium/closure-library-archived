@@ -48,7 +48,7 @@ goog.debug.logRecordSerializer.Param_ = {
  * exception is likely to be lost.
  * @param {goog.debug.LogRecord} record The record to serialize.
  * @return {string} Serialized JSON string of the log message.
- * @_suppress {strictMissingProperties} message is not defined on Object
+ * @suppress {strictMissingProperties} message is not defined on Object
  */
 goog.debug.logRecordSerializer.serialize = function(record) {
   var param = goog.debug.logRecordSerializer.Param_;

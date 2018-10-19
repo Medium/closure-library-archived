@@ -267,7 +267,7 @@ goog.net.ImageLoader.prototype.loadImage_ = function(imageRequest, id) {
  * Handles net events (READY_STATE_CHANGE, LOAD, ABORT, and ERROR).
  * @param {goog.events.Event} evt The network event to handle.
  * @private
- * @_suppress {strictMissingProperties} Part of the go/strict_warnings_migration
+ * @suppress {strictMissingProperties} Part of the go/strict_warnings_migration
  */
 goog.net.ImageLoader.prototype.onNetworkEvent_ = function(evt) {
   var image = /** @type {Element} */ (evt.currentTarget);

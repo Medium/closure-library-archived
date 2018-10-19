@@ -977,7 +977,7 @@ goog.ui.Dialog.prototype.getButtonSet = function() {
  * Handles a click on the button container.
  * @param {goog.events.BrowserEvent} e Browser's event object.
  * @private
- * @_suppress {strictMissingProperties} Part of the go/strict_warnings_migration
+ * @suppress {strictMissingProperties} Part of the go/strict_warnings_migration
  */
 goog.ui.Dialog.prototype.onButtonClick_ = function(e) {
   var button = this.findParentButton_(/** @type {Element} */ (e.target));
@@ -997,7 +997,7 @@ goog.ui.Dialog.prototype.onButtonClick_ = function(e) {
  * @param {Element} element The element that was clicked on.
  * @return {Element} Returns the parent button or null if not found.
  * @private
- * @_suppress {strictMissingProperties} Part of the go/strict_warnings_migration
+ * @suppress {strictMissingProperties} Part of the go/strict_warnings_migration
  */
 goog.ui.Dialog.prototype.findParentButton_ = function(element) {
   var el = element;
@@ -1017,7 +1017,7 @@ goog.ui.Dialog.prototype.findParentButton_ = function(element) {
  * fired.  Also prevents tabbing out of the dialog.
  * @param {goog.events.BrowserEvent} e Browser's event object.
  * @private
- * @_suppress {strictMissingProperties} Part of the go/strict_warnings_migration
+ * @suppress {strictMissingProperties} Part of the go/strict_warnings_migration
  */
 goog.ui.Dialog.prototype.onKey_ = function(e) {
   var close = false;
@@ -1414,7 +1414,7 @@ goog.ui.Dialog.ButtonSet.prototype.getAllButtons = function() {
  * does nothing.
  * @param {string} key The button to enable or disable.
  * @param {boolean} enabled True to enable; false to disable.
- * @_suppress {strictMissingProperties} Part of the go/strict_warnings_migration
+ * @suppress {strictMissingProperties} Part of the go/strict_warnings_migration
  */
 goog.ui.Dialog.ButtonSet.prototype.setButtonEnabled = function(key, enabled) {
   var button = this.getButton(key);
@@ -1427,7 +1427,7 @@ goog.ui.Dialog.ButtonSet.prototype.setButtonEnabled = function(key, enabled) {
 /**
  * Enables or disables all of the buttons in this set.
  * @param {boolean} enabled True to enable; false to disable.
- * @_suppress {strictMissingProperties} Part of the go/strict_warnings_migration
+ * @suppress {strictMissingProperties} Part of the go/strict_warnings_migration
  */
 goog.ui.Dialog.ButtonSet.prototype.setAllButtonsEnabled = function(enabled) {
   var allButtons = this.getAllButtons();

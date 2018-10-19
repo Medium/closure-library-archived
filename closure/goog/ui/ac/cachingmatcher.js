@@ -224,7 +224,7 @@ goog.ui.ac.CachingMatcher.prototype.clearCacheIfTooLarge_ = function() {
  * unthrottled, so don't call it directly; instead use
  * this.throttledTriggerBaseMatch_.
  * @private
- * @_suppress {strictMissingProperties} Part of the go/strict_warnings_migration
+ * @suppress {strictMissingProperties} Part of the go/strict_warnings_migration
  */
 goog.ui.ac.CachingMatcher.prototype.triggerBaseMatch_ = function() {
   this.baseMatcher_.requestMatchingRows(
