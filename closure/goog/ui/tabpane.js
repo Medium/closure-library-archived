@@ -426,7 +426,7 @@ goog.ui.TabPane.prototype.getElement = function() {
  * Click event handler for header element, handles clicks on tabs.
  * @param {goog.events.BrowserEvent} event Click event.
  * @private
- * @_suppress {strictMissingProperties} Part of the go/strict_warnings_migration
+ * @suppress {strictMissingProperties} Part of the go/strict_warnings_migration
  */
 goog.ui.TabPane.prototype.onHeaderClick_ = function(event) {
   var el = event.target;

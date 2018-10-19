@@ -1073,7 +1073,7 @@ goog.ui.KeyboardShortcutHandler.prototype.handleKeyDown_ = function(event) {
  * @param {!goog.events.BrowserEvent} event Keypress event.
  * @return {boolean} Whether to attempt to process the event as a shortcut.
  * @private
- * @_suppress {strictMissingProperties} Part of the go/strict_warnings_migration
+ * @suppress {strictMissingProperties} Part of the go/strict_warnings_migration
  */
 goog.ui.KeyboardShortcutHandler.prototype.isValidShortcut_ = function(event) {
   // Ignore Ctrl, Shift and ALT

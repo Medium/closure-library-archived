@@ -120,7 +120,7 @@ goog.window.open = function(linkRef, opt_options, opt_parentWin) {
   }
 
   /** @suppress {missingProperties} loose references to 'target' */
-  /** @_suppress {strictMissingProperties} */
+  /** @suppress {strictMissingProperties} */
   var target = opt_options.target || linkRef.target;
 
   var sb = [];

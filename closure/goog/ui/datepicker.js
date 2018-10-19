@@ -829,7 +829,7 @@ goog.ui.DatePicker.prototype.setDate_ = function(date, fireSelection) {
  * Updates the navigation row (navigating months and maybe years) in the navRow_
  * element of a created picker.
  * @private
- * @_suppress {strictMissingProperties} Part of the go/strict_warnings_migration
+ * @suppress {strictMissingProperties} Part of the go/strict_warnings_migration
  */
 goog.ui.DatePicker.prototype.updateNavigationRow_ = function() {
   if (!this.elNavRow_) {
@@ -960,7 +960,7 @@ goog.ui.DatePicker.prototype.updateFooterRow_ = function() {
 
 /**
  * @override
- * @_suppress {strictMissingProperties} Part of the go/strict_warnings_migration
+ * @suppress {strictMissingProperties} Part of the go/strict_warnings_migration
  */
 goog.ui.DatePicker.prototype.decorateInternal = function(el) {
   goog.ui.DatePicker.superClass_.decorateInternal.call(this, el);
@@ -1089,7 +1089,7 @@ goog.ui.DatePicker.prototype.disposeInternal = function() {
  * Click handler for date grid.
  * @param {goog.events.BrowserEvent} event Click event.
  * @private
- * @_suppress {strictMissingProperties} Part of the go/strict_warnings_migration
+ * @suppress {strictMissingProperties} Part of the go/strict_warnings_migration
  */
 goog.ui.DatePicker.prototype.handleGridClick_ = function(event) {
   if (event.target.tagName == goog.dom.TagName.TD) {
@@ -1258,7 +1258,7 @@ goog.ui.DatePicker.prototype.handleYearMenuClick_ = function(target) {
  * @param {function(Element)} method Call back method.
  * @param {string} selected Item to mark as selected in menu.
  * @private
- * @_suppress {strictMissingProperties} Part of the go/strict_warnings_migration
+ * @suppress {strictMissingProperties} Part of the go/strict_warnings_migration
  */
 goog.ui.DatePicker.prototype.createMenu_ = function(
     srcEl, items, method, selected) {
@@ -1325,7 +1325,7 @@ goog.ui.DatePicker.prototype.handleMenuClick_ = function(event) {
  * Keypress handler for menu.
  * @param {goog.events.BrowserEvent} event Keypress event.
  * @private
- * @_suppress {strictMissingProperties} Part of the go/strict_warnings_migration
+ * @suppress {strictMissingProperties} Part of the go/strict_warnings_migration
  */
 goog.ui.DatePicker.prototype.handleMenuKeyPress_ = function(event) {
   // Prevent the grid keypress handler from catching the keypress event.

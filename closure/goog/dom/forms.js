@@ -16,7 +16,7 @@
  * @fileoverview Utilities for manipulating a form and elements.
  *
  * @author arv@google.com (Erik Arvidsson)
- * @_suppress {strictMissingProperties}
+ * @suppress {strictMissingProperties}
  */
 
 goog.provide('goog.dom.forms');
