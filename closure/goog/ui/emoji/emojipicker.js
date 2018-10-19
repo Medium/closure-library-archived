@@ -417,7 +417,7 @@ goog.ui.emoji.EmojiPicker.prototype.setProgressiveRender = function(
  * Adjusts the number of rows to be the maximum row count out of all the emoji
  * groups, in order to prevent jitter in switching among the tabs.
  * @private
- * @suppress {strictMissingProperties} Part of the go/strict_warnings_migration
+ * @_suppress {strictMissingProperties} Part of the go/strict_warnings_migration
  */
 goog.ui.emoji.EmojiPicker.prototype.adjustNumRowsIfNecessary_ = function() {
   var currentMax = 0;

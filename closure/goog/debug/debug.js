@@ -40,7 +40,7 @@ goog.define('goog.debug.FORCE_SLOPPY_STACKS', false);
  * @param {boolean=} opt_cancel Whether to stop the error from reaching the
  *    browser.
  * @param {Object=} opt_target Object that fires onerror events.
- * @suppress {strictMissingProperties} onerror is not defined as a property
+ * @_suppress {strictMissingProperties} onerror is not defined as a property
  *    on Object.
  */
 goog.debug.catchErrors = function(logFunc, opt_cancel, opt_target) {
@@ -240,7 +240,7 @@ goog.debug.exposeArray = function(arr) {
  *    fileName: (?|undefined),
  *    stack: (?|undefined)
  * }} Normalized error object.
- * @suppress {strictMissingProperties} properties not defined on err
+ * @_suppress {strictMissingProperties} properties not defined on err
  */
 goog.debug.normalizeErrorObject = function(err) {
   var href = goog.getObjectByName('window.location.href');
